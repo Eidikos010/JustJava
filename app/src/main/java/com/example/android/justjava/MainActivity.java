@@ -9,14 +9,15 @@ package com.example.android.justjava;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
-import java.text.NumberFormat;
 
 /**
  * This app displays an order form to order coffee.
  */
 public class MainActivity extends AppCompatActivity {
     int quantity = 0;
+    boolean checked;
 
 
     @Override
@@ -29,7 +30,11 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order, the plus and the minus button is clicked.
      */
     public void submitOrder(View view) {
-        displayMessage(createOrderSummary());
+        CheckBox whippedCreamCkeckBox = (CheckBox) findViewById(R.id.whipped_cream_ckeckbox);
+        boolean hasWhippedCream = whippedCreamCkeckBox.isChecked();
+        int price = calculatePrice();
+        String priceMessage = createOrderSummary(price, hasWhippedCream);
+        displayMessage(priceMessage);
     }
 
     /**
@@ -70,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
      * Create the summary that is displayed uppon order
      * @return String of the whole message
      */
-    private String createOrderSummary (){
-        return "Name: Kwlos\nQuantity: "+quantity+"\nTotal: $"+calculatePrice()+"\nThank you!";
+    private String createOrderSummary (int price, boolean hasWhippedCream){
+        return "Name: Kwlos\nAdd whipped Cream: " + hasWhippedCream + "\nQuantity: "+quantity+"\nTotal: $"+price+"\nThank you!";
     }
 }
