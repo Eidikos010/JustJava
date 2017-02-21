@@ -33,12 +33,20 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order, the plus and the minus button is clicked.
      */
     public void submitOrder(View view) {
+        
+        //Gets the text for the Name
         EditText nameText = (EditText) findViewById(R.id.nameText);
         String userNameText = nameText.getText().toString();
+
+        //Gets the boolean value for the Whipped Cream Box
         CheckBox whippedCreamCkeckBox = (CheckBox) findViewById(R.id.whipped_cream_ckeckbox);
         boolean hasWhippedCream = whippedCreamCkeckBox.isChecked();
+
+        //Gets the boolean value for the Chocolate Box
         CheckBox chocolateCkeckBox = (CheckBox) findViewById(R.id.chocolate_ckeckbox);
         boolean hasChocolate = chocolateCkeckBox.isChecked();
+
+        //Calls the methods for calculating the price and then creating the order summary
         int price = calculatePrice();
         String priceMessage = createOrderSummary(price, hasWhippedCream, hasChocolate, userNameText);
         displayMessage(priceMessage);
