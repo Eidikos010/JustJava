@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Calculates the price of the order.
-     *
+     * <p>
      * param quantity is the number of cups of coffee ordered
      */
     private int calculatePrice() {
@@ -47,12 +47,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void increment(View view) {
-        quantity=quantity+1;
+        quantity = quantity + 1;
         displayQuantity(quantity);
     }
 
     public void decrement(View view) {
-        quantity=quantity-1;
+        quantity = quantity - 1;
         displayQuantity(quantity);
     }
 
@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + number);
     }
+
     /**
      * This method displays the given text on the screen.
      */
@@ -73,9 +74,10 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Create the summary that is displayed uppon order
+     *Etsi gia dokimi den ekana kamia allagi
      * @return String of the whole message
      */
-    private String createOrderSummary (int price, boolean hasWhippedCream){
-        return "Name: Kwlos\nAdd whipped Cream: " + hasWhippedCream + "\nQuantity: "+quantity+"\nTotal: $"+price+"\nThank you!";
+    private String createOrderSummary(int price, boolean hasWhippedCream) {
+        return "Name: Kwlos\nAdd whipped Cream: " + hasWhippedCream + "\nQuantity: " + quantity + "\nTotal: $" + price + "\nThank you!";
     }
 }
