@@ -8,8 +8,11 @@ package com.example.android.justjava;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 /**
@@ -30,10 +33,14 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order, the plus and the minus button is clicked.
      */
     public void submitOrder(View view) {
+        EditText nameText = (EditText) findViewById(R.id.nameText);
+        String userNameText = nameText.getText().toString();
         CheckBox whippedCreamCkeckBox = (CheckBox) findViewById(R.id.whipped_cream_ckeckbox);
         boolean hasWhippedCream = whippedCreamCkeckBox.isChecked();
+        CheckBox chocolateCkeckBox = (CheckBox) findViewById(R.id.chocolate_ckeckbox);
+        boolean hasChocolate = chocolateCkeckBox.isChecked();
         int price = calculatePrice();
-        String priceMessage = createOrderSummary(price, hasWhippedCream);
+        String priceMessage = createOrderSummary(price, hasWhippedCream, hasChocolate, userNameText);
         displayMessage(priceMessage);
     }
 
@@ -74,10 +81,15 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Create the summary that is displayed uppon order
-     *Etsi gia dokimi den ekana kamia allagi
+     *
      * @return String of the whole message
      */
-    private String createOrderSummary(int price, boolean hasWhippedCream) {
-        return "Name: Kwlos\nAdd whipped Cream: " + hasWhippedCream + "\nQuantity: " + quantity + "\nTotal: $" + price + "\nThank you!";
+    private String createOrderSummary(int price, boolean hasWhippedCream, boolean hasChocolate, String name) {
+        String orderSummary = "Name: " + name;
+        orderSummary += "\nAdd whipped Cream? " + hasWhippedCream;
+        orderSummary += "\nAdd chocolate? " + hasChocolate;
+        orderSummary += "\nQuantity: " + quantity;
+        orderSummary += "\nTotal: $" + price + "\nThank you!";
+        return orderSummary;
     }
 }
