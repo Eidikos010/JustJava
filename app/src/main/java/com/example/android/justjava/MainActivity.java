@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void decrement(View view) {
-        
+
         if (quantity == 1) {
             Toast.makeText(MainActivity.this, "Μήπως να σου δώσουμε και λεφτά;", Toast.LENGTH_SHORT).show();
             return;
