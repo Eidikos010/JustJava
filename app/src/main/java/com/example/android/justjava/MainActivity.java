@@ -8,18 +8,17 @@ package com.example.android.justjava;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * This app displays an order form to order coffee.
  */
 public class MainActivity extends AppCompatActivity {
-    int quantity = 0;
+    int quantity = 1;
     boolean checked;
 
 
@@ -33,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order, the plus and the minus button is clicked.
      */
     public void submitOrder(View view) {
-        
+
         //Gets the text for the Name
         EditText nameText = (EditText) findViewById(R.id.nameText);
         String userNameText = nameText.getText().toString();
@@ -47,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         boolean hasChocolate = chocolateCkeckBox.isChecked();
 
         //Calls the methods for calculating the price and then creating the order summary
-        int price = calculatePrice();
+        int price = calculatePrice(hasChocolate, hasWhippedCream);
         String priceMessage = createOrderSummary(price, hasWhippedCream, hasChocolate, userNameText);
         displayMessage(priceMessage);
     }
@@ -57,18 +56,43 @@ public class MainActivity extends AppCompatActivity {
      * <p>
      * param quantity is the number of cups of coffee ordered
      */
-    private int calculatePrice() {
-        return quantity * 5;
+    private int calculatePrice(boolean chocolate, boolean cream) {
+        int topping = 0;
+
+        if (chocolate) {
+            topping += 2;
+        }
+
+        if (cream) {
+            topping += 1;
+        }
+
+        return quantity * (5 + topping);
     }
 
+
     public void increment(View view) {
+
+        if (quantity == 100) {
+            Toast.makeText(MainActivity.this, "Ε πόσους θα πιεις ρε μαλάκα;", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         quantity = quantity + 1;
         displayQuantity(quantity);
+
     }
 
     public void decrement(View view) {
+        
+        if (quantity == 1) {
+            Toast.makeText(MainActivity.this, "Μήπως να σου δώσουμε και λεφτά;", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         quantity = quantity - 1;
         displayQuantity(quantity);
+
     }
 
     /**
