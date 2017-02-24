@@ -7,7 +7,6 @@
 package com.example.android.justjava;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -55,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_SEND);
         //intent.setData(Uri.parse("mailto:")); //Only email apps should handle this alla emena de mou douleuei enw me to katw komple!
         intent.setType("*/*");
-        intent.putExtra(Intent.EXTRA_SUBJECT, "Just Java order for " + userNameText);
+        intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.order_summary_email_subject, userNameText));
         intent.putExtra(Intent.EXTRA_TEXT, priceMessage);
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
@@ -119,11 +118,11 @@ public class MainActivity extends AppCompatActivity {
      * @return String of the whole message
      */
     private String createOrderSummary(int price, boolean hasWhippedCream, boolean hasChocolate, String name) {
-        String orderSummary = "Name: " + name;
-        orderSummary += "\nAdd whipped Cream? " + hasWhippedCream;
-        orderSummary += "\nAdd chocolate? " + hasChocolate;
-        orderSummary += "\nQuantity: " + quantity;
-        orderSummary += "\nTotal: $" + price + "\nThank you!";
+        String orderSummary = getString(R.string.order_summary_name, name);
+        orderSummary += "\n" + getString(R.string.order_summary_whipped_cream, hasWhippedCream);
+        orderSummary += "\n" + getString(R.string.order_summary_chocolate, hasChocolate);
+        orderSummary += "\n" + getString(R.string.order_summary_quantity, quantity);
+        orderSummary += "\n" + getString(R.string.order_summary_price, price) + "\n" + getString(R.string.thank_you);
         return orderSummary;
     }
 }
