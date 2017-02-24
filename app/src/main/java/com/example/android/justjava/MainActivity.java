@@ -7,6 +7,7 @@
 package com.example.android.justjava;
 
 import android.content.Intent;
+import android.icu.text.NumberFormat;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -122,7 +123,8 @@ public class MainActivity extends AppCompatActivity {
         orderSummary += "\n" + getString(R.string.order_summary_whipped_cream, hasWhippedCream);
         orderSummary += "\n" + getString(R.string.order_summary_chocolate, hasChocolate);
         orderSummary += "\n" + getString(R.string.order_summary_quantity, quantity);
-        orderSummary += "\n" + getString(R.string.order_summary_price, price) + "\n" + getString(R.string.thank_you);
+        orderSummary += "\n" + getString(R.string.order_summary_price, NumberFormat.getCurrencyInstance().format(price));
+        orderSummary += "\n" + getString(R.string.thank_you);
         return orderSummary;
     }
 }

@@ -11,7 +11,7 @@
     <string name="order_summary_whipped_cream">Add whipped Cream? <xliff:g id="addWhippedCream" example="true">%b</xliff:g></string>
     <string name="order_summary_chocolate">Add chocolate? <xliff:g id="addChocolate" example="true">%b</xliff:g></string>
     <string name="order_summary_quantity">Quantity: <xliff:g id="quantity" example="2">%d</xliff:g></string>
-    <string name="order_summary_price">Total: $<xliff:g id="price" example="$10">%s</xliff:g></string>
+    <string name="order_summary_price">Total: <xliff:g id="price" example="$10">%s</xliff:g></string>
     <string name="thank_you">Thank you!</string>
     <string name="order_summary_email_subject">Just Java order for <xliff:g id="name" example="Amy">%s</xliff:g></string>
     <string name="initial_quantity_value">2</string>
