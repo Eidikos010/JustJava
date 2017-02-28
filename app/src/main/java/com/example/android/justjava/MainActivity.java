@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
         orderSummary += "\n" + getString(R.string.order_summary_whipped_cream, hasWhippedCream);
         orderSummary += "\n" + getString(R.string.order_summary_chocolate, hasChocolate);
         orderSummary += "\n" + getString(R.string.order_summary_quantity, quantity);
-        orderSummary += "\n" + getString(R.string.order_summary_price, NumberFormat.getCurrencyInstance().format(price));
+        //orderSummary += "\n" + getString(R.string.order_summary_price, NumberFormat.getCurrencyInstance().format(price));
         orderSummary += "\n" + getString(R.string.thank_you);
         return orderSummary;
     }
